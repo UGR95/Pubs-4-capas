@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="D_Logging.cs" />
     <Compile Include="D_Autores.cs" />
+    <Compile Include="D_Titulos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

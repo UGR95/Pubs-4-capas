@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaNegocio;
 
 namespace Pubs
 {
@@ -25,21 +26,16 @@ namespace Pubs
         }
         public void ActualizarDataGridView()
         {
-            DatosPubs datos = new DatosPubs();
-
+            N_Titulos n_Titulos = new N_Titulos();
             try
             {
-
-                dgvTitulos.DataSource = datos.VistaTitulos();
-
-
+                dgvTitulos.DataSource = n_Titulos.ObtenerTitluos();//datos.VistaTitulos();
+                LlenarTitulo();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-
-            LlenarTitulo();
         }
 
         private void btnRegresar_Click(object sender, EventArgs e)
