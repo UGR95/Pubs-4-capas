@@ -155,16 +155,16 @@ namespace Pubs
                 DataGridViewRow filaSeleccionada = dgvTitulos.CurrentRow;
 
                 // Obtener los valores de las celdas de la fila seleccionada
-                string valorColumna1 = filaSeleccionada.Cells["ID Titulo"].Value.ToString();
-                string valorColumna2 = filaSeleccionada.Cells["Título Libro"].Value.ToString();
-                string valorColumna3 = filaSeleccionada.Cells["Tipo Libro"].Value.ToString();
-                string valorColumna4 = filaSeleccionada.Cells["Id Editorial"].Value.ToString();
-                decimal valorColumna5 = decimal.Parse(filaSeleccionada.Cells["Precio"].Value.ToString());
-                decimal valorColumna6 = decimal.Parse(filaSeleccionada.Cells["Anticipo"].Value.ToString());
-                int valorColumna7 = int.Parse(filaSeleccionada.Cells["Regalias"].Value.ToString());
-                int valorColumna8 = int.Parse(filaSeleccionada.Cells["Ventas año hasta la fecha"].Value.ToString());
-                string valorColumna9 = filaSeleccionada.Cells["Notas"].Value.ToString();
-                DateTime valorColumna10 = DateTime.Parse(filaSeleccionada.Cells["Fecha de publicación"].Value.ToString());
+                string valorColumna1 = filaSeleccionada.Cells[0].Value.ToString();
+                string valorColumna2 = filaSeleccionada.Cells[1].Value.ToString();
+                string valorColumna3 = filaSeleccionada.Cells[2].Value.ToString();
+                string valorColumna4 = filaSeleccionada.Cells[3].Value.ToString();
+                decimal valorColumna5 = decimal.Parse(filaSeleccionada.Cells[4].Value.ToString());
+                decimal valorColumna6 = decimal.Parse(filaSeleccionada.Cells[5].Value.ToString());
+                int valorColumna7 = int.Parse(filaSeleccionada.Cells[6].Value.ToString());
+                int valorColumna8 = int.Parse(filaSeleccionada.Cells[7].Value.ToString());
+                string valorColumna9 = filaSeleccionada.Cells[8].Value.ToString();
+                DateTime valorColumna10 = DateTime.Parse(filaSeleccionada.Cells[9].Value.ToString());
 
                 // Crear una instancia del formulario de modificación y pasar los datos a él
                 frmModificarTitulos modificarTitulos = new frmModificarTitulos(valorColumna1, valorColumna2, valorColumna3, valorColumna4,

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaNegocio;
 
 namespace Pubs
 {
@@ -25,21 +26,32 @@ namespace Pubs
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            DatosPubs datos = new DatosPubs();
+            N_Titulos n_Titulos = new N_Titulos();
+            string Error;
             try
             {
                 // Obtener los valores seleccionados en los ComboBox
                 string pub_id = cbIdPub.SelectedItem.ToString();
                 string pub_name = cbPub.SelectedItem.ToString();
 
-                datos.AltaTitulos(txtId.Text, txtNombre.Text, txtTipo.Text, pub_id, nupPrecio.Value,
+               Error = n_Titulos.AltaTitulo(txtId.Text, txtNombre.Text, txtTipo.Text, pub_id, nupPrecio.Value,
                                     nupAnticipo.Value, ((int)nupRegalias.Value), ((int)nupYtd.Value),
                                     rtxtNotas.Text, dtpPublicacion.Value);
 
-                MessageBox.Show("Título agregado", "Informativo", MessageBoxButtons.OK);
+                if (Error == "1")
+                {
+                    MessageBox.Show("Título agregado", "Informativo", MessageBoxButtons.OK);
 
-                // Limpiar los controles después de agregar el título
-                LimpiarControles();
+                    // Limpiar los controles después de agregar el título
+                    LimpiarControles();
+                }
+                else if (Error == "0")
+                {
+                    MessageBox.Show("No se actualizaron Datos", "Informativo", MessageBoxButtons.OK);
+                }
+                else
+                    MessageBox.Show("Servicio no disponible "+ Error , "Error", MessageBoxButtons.OK);
+
             }
             catch (Exception ex)
             {

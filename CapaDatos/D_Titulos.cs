@@ -66,5 +66,47 @@ namespace CapaDatos
                 throw;
             }
         }
+
+        public string AltaTitulo(string IdTitulo, string Titulo, string Tipo, string IdPub, decimal Precio,
+                    decimal Anticipo, int Regalias, int YtdVentas, string Notas, DateTime FechaPublicacion)
+        {
+            int Resultado;
+            try
+            {
+                using (SqlConnection connection= new SqlConnection(Conexion))
+                {
+                    connection.Open();
+
+                    SqlCommand sqlCommand = new SqlCommand("spi_AltaTitulos", connection);
+
+                    sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                    sqlCommand.Parameters.AddWithValue("@IdTitulo", IdTitulo);
+                    sqlCommand.Parameters.AddWithValue("@Titulo", Titulo);
+                    sqlCommand.Parameters.AddWithValue("@Tipo", Tipo);
+                    sqlCommand.Parameters.AddWithValue("@IdPub", IdPub);
+                    sqlCommand.Parameters.AddWithValue("@Precio", Precio);
+                    sqlCommand.Parameters.AddWithValue("@Anticipo", Anticipo);
+                    sqlCommand.Parameters.AddWithValue("@Regalias", Regalias);
+                    sqlCommand.Parameters.AddWithValue("@YtdVentas", YtdVentas);
+                    sqlCommand.Parameters.AddWithValue("@Notas", Notas);
+                    sqlCommand.Parameters.AddWithValue("@FechaPublicacion", FechaPublicacion);
+
+                  Resultado = (int)sqlCommand.ExecuteScalar();
+
+                    if (Resultado == 1)
+                    {
+                        return "1";
+                    }
+                    else
+                        return "0";
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.ToString();
+                throw;
+            }
+        }
     }
 }
