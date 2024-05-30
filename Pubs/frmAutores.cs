@@ -32,6 +32,7 @@ namespace Pubs
             try
             {
                 dgvAutores.DataSource = n_VistaAutores.vistaAutores();
+                dgvAutores.ReadOnly = false;
             }
             catch (Exception ex)
             {
